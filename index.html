@@ -49,33 +49,41 @@
 
         <h1>Steam Profiilitiedot</h1>
     
-    <div id="profile">
-        <p><strong>Pelaajan nimi:</strong> <span id="playerName">Ladataan...</span></p>
-        <p><strong>Profiilin URL:</strong> <a href="" id="profileUrl" target="_blank">Ladataan...</a></p>
-        <img id="profileAvatar" src="" alt="Avatar" width="100">
-        <p><strong>Reaali-nimi:</strong> <span id="realName">Ladataan...</span></p>
-    </div>
-    
-    <script>
-        async function getSteamProfile() {
-            const response = await fetch('https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=EC5728BA25DE2647D995F373555E2E7C&steamids=76561197970941149');
-            const data = await response.json();
-            
-            if (data.response && data.response.players.length > 0) {
-                const playerData = data.response.players[0];
+        <div id="profile">
+            <p><strong>Pelaajan nimi:</strong> <span id="playerName">Ladataan...</span></p>
+            <p><strong>Profiilin URL:</strong> <a href="" id="profileUrl" target="_blank">Ladataan...</a></p>
+            <img id="profileAvatar" src="" alt="Avatar" width="100">
+            <p><strong>Reaali-nimi:</strong> <span id="realName">Ladataan...</span></p>
+        </div>
+        
+        <script>
+            async function getSteamProfile() {
+                const corsProxy = 'https://api.allorigins.win/get?url='; // All Origins välimuisti
+                const steamApiUrl = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=EC5728BA25DE2647D995F373555E2E7C&steamids=76561197970941149';
+                const response = await fetch(corsProxy + encodeURIComponent(steamApiUrl)); // URL: noudetaan All Originsin kautta
                 
-                document.getElementById('playerName').textContent = playerData.personaname;
-                document.getElementById('profileUrl').href = playerData.profileurl;
-                document.getElementById('profileUrl').textContent = playerData.profileurl;
-                document.getElementById('profileAvatar').src = playerData.avatarfull;
-                document.getElementById('realName').textContent = playerData.realname;
-            } else {
-                document.getElementById('playerName').textContent = 'Tietojen hakeminen epäonnistui';
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    if (data.contents) {
+                        const apiData = JSON.parse(data.contents); // JSON-purku välimuistipalvelusta
+                        const playerData = apiData.response.players[0];
+                        
+                        document.getElementById('playerName').textContent = playerData.personaname;
+                        document.getElementById('profileUrl').href = playerData.profileurl;
+                        document.getElementById('profileUrl').textContent = playerData.profileurl;
+                        document.getElementById('profileAvatar').src = playerData.avatarfull;
+                        document.getElementById('realName').textContent = playerData.realname;
+                    } else {
+                        document.getElementById('playerName').textContent = 'Tietojen hakeminen epäonnistui';
+                    }
+                } else {
+                    document.getElementById('playerName').textContent = 'API-pyyntö epäonnistui';
+                }
             }
-        }
-
-        getSteamProfile();
-    </script>
+    
+            getSteamProfile();
+        </script>
     </main>
 </body>
 </html>
