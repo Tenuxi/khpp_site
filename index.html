@@ -47,7 +47,7 @@
 
 
 
-        <h1>Steam Profiilitiedot</h1>
+        <!-- <h1>Steam Profiilitiedot</h1>
     
         <div id="profile">
             <p><strong>Pelaajan nimi:</strong> <span id="playerName">Ladataan...</span></p>
@@ -72,7 +72,6 @@
                 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log(Vastausok mutta ladataan);
                     
                     if (data.contents) {
                         const apiData = JSON.parse(data.contents); // Puramme välimuistista saadun JSON:n
@@ -92,7 +91,7 @@
             }
     
             getSteamProfile();
-        </script>
+        </script> -->
     </main>
 </body>
 </html>
