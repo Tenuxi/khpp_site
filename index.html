@@ -58,15 +58,23 @@
         
         <script>
             async function getSteamProfile() {
-                const corsProxy = 'https://api.allorigins.win/get?url='; // All Origins välimuisti
+                const corsProxy = 'https://cors-anywhere.herokuapp.com/';
                 const steamApiUrl = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=EC5728BA25DE2647D995F373555E2E7C&steamids=76561197970941149';
-                const response = await fetch(corsProxy + encodeURIComponent(steamApiUrl)); // URL: noudetaan All Originsin kautta
+                
+                // Fetch-pyyntö, jossa lisätään tarvittavat otsikot
+                const response = await fetch(corsProxy + steamApiUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Origin': window.location.origin,  // Lisätään Origin-otsikko
+                        'X-Requested-With': 'XMLHttpRequest'  // Lisätään X-Requested-With-otsikko
+                    }
+                });
                 
                 if (response.ok) {
                     const data = await response.json();
                     
                     if (data.contents) {
-                        const apiData = JSON.parse(data.contents); // JSON-purku välimuistipalvelusta
+                        const apiData = JSON.parse(data.contents); // Puramme välimuistista saadun JSON:n
                         const playerData = apiData.response.players[0];
                         
                         document.getElementById('playerName').textContent = playerData.personaname;
