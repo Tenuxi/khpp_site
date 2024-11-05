@@ -1,9 +1,10 @@
 // Steam API -avain
-const apiKey = 'AF70B0B16442EAAF9938983AB40A402D';  // Vaihda tämä omaan API-avaimeesi
+const apiKey = 'EC5728BA25DE2647D995F373555E2E7C';  // Vaihda tämä omaan API-avaimeesi
 const steamId = '76561197970941149';  // Vaihda tämä käyttäjän Steam-ID:hen
 
 // Rakennetaan URL API-pyyntöä varten
 const url = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${steamId}`;
+// https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=EC5728BA25DE2647D995F373555E2E7C&steamids=76561197970941149
 
 // Funktio, joka hakee pelaajan tiedot ja tulostaa ne HTML:hen
 async function getSteamProfile() {
