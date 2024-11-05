@@ -15,28 +15,29 @@ async function getSteamProfile() {
         console.log("Aloitetaan pyyntö Steam API:lle...");
 
         const response = await fetch(url);
-
-        console.log("Pyyntö tehty, tarkistetaan vastaus...");
-
+        
+        // Tarkistetaan, että pyyntö onnistui
         if (!response.ok) {
-            // Jos pyyntö epäonnistuu, heitetään virhe
             throw new Error(`Virhe API-pyynnössä: ${response.status}`);
         }
 
+        // Haetaan JSON-vastaus
         const data = await response.json();
 
-        // Tarkistetaan, että saatiin pelaajan tiedot
+        console.log("Saatiin API-vastaus:", data);
+
+        // Tarkistetaan, että saatiin pelaajatiedot
         if (data.response && data.response.players && data.response.players.length > 0) {
             const playerData = data.response.players[0];
-            console.log("Pelaajatiedot saatu:", playerData);
 
             // Päivitetään HTML-sivun sisältö
             document.getElementById('playerName').textContent = playerData.personaname;
             document.getElementById('profileUrl').textContent = playerData.profileurl;
+            document.getElementById('profileAvatar').src = playerData.avatarfull;
         } else {
             throw new Error('Pelaajatietoja ei löytynyt.');
         }
-
+        
     } catch (error) {
         console.error('Virhe:', error.message);
         document.getElementById('playerName').textContent = 'Tietojen hakeminen epäonnistui';
