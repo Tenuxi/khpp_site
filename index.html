@@ -9,18 +9,19 @@
     <link rel="stylesheet" href="css/header_navigation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/navigation.js"></script>
+    <script src="js/steamApi.js"></script>
     <title>KHPP</title>
 </head>
 <body>
     <header>
         <div class="flex">
             <h1>KHPP</h1>
-            <h3>Kanta-Hämeen Paskimmat Pelaajat</h3>
+            <!-- <h3>Kanta-Hämeen Paskimmat Pelaajat</h3> -->
             <!-- Top Navigation Menu -->
             <div class="topnav">
                 <!-- <a href="#home" class="active">Logo</a> -->
                 <!-- Navigation links (hidden by default) -->
-                <div id="myLinks">
+                <div id="myLinks" class="linksSection">
                 <a href="#news">News</a>
                 <a href="#contact">Contact</a>
                 <a href="#about">About</a>
@@ -36,6 +37,13 @@
     <main>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos dolor accusamus neque laborum atque accusantium perspiciatis, in illo itaque assumenda totam. Facilis, voluptatum ipsum excepturi similique facere unde quos necessitatibus quia culpa
             eligendi consequuntur vero quas eum dolorem voluptates laboriosam? Dolor neque quas minus numquam laboriosam magni voluptatem enim eveniet.</p>
+    
+        <h1>Steam Profiilitiedot</h1>
+    
+        <div id="profile">
+            <p><strong>Pelaajan nimi:</strong> <span id="playerName">Ladataan...</span></p>
+            <p><strong>Profiilin URL:</strong> <span id="profileUrl">Ladataan...</span></p>
+        </div>
     </main>
 </body>
 </html>

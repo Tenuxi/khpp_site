@@ -37,12 +37,9 @@ main {
 
 /* Style the navigation menu */
 .topnav {
-    overflow: hidden;
-    background-color: #333;
-    position: relative;
-    background-color: red;
-    width: 60px;
-    height: 60px;
+    position: absolute;
+    top: 110px;
+    right: 30px;
   }
   
   /* Hide the links inside the navigation menu (except for logo/home) */
@@ -53,7 +50,6 @@ main {
   /* Style navigation menu links */
   .topnav a {
     color: white;
-    padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
     display: block;
@@ -61,7 +57,7 @@ main {
   
   /* Style the hamburger menu */
   .topnav a.icon {
-    background: black;
+    background: transparent;
     display: block;
     position: absolute;
     right: 0;
@@ -79,3 +75,14 @@ main {
     background-color: #04AA6D;
     color: white;
   }
+
+  .linksSection {
+    width: 250px;
+    height: auto;
+    position: relative;
+    padding-top: 40px;
+    background-color: black;
+    line-height: 2;
+  }
+
+  
