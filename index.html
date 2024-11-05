@@ -72,6 +72,7 @@
                 
                 if (response.ok) {
                     const data = await response.json();
+                    console.log(Vastausok mutta ladataan);
                     
                     if (data.contents) {
                         const apiData = JSON.parse(data.contents); // Puramme välimuistista saadun JSON:n
