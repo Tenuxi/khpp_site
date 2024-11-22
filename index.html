@@ -35,8 +35,7 @@
     </header>
     
     <main>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos dolor accusamus neque laborum atque accusantium perspiciatis, in illo itaque assumenda totam. Facilis, voluptatum ipsum excepturi similique facere unde quos necessitatibus quia culpa
-            eligendi consequuntur vero quas eum dolorem voluptates laboriosam? Dolor neque quas minus numquam laboriosam magni voluptatem enim eveniet.</p>
+        
     
         <h1>Steam Profiilitiedot</h1>
     
@@ -58,51 +57,6 @@
 
 
 
-        <!-- <h1>Steam Profiilitiedot</h1>
-    
-        <div id="profile">
-            <p><strong>Pelaajan nimi:</strong> <span id="playerName">Ladataan...</span></p>
-            <p><strong>Profiilin URL:</strong> <a href="" id="profileUrl" target="_blank">Ladataan...</a></p>
-            <img id="profileAvatar" src="" alt="Avatar" width="100">
-            <p><strong>Reaali-nimi:</strong> <span id="realName">Ladataan...</span></p>
-        </div>
-        
-        <script>
-            async function getSteamProfile() {
-                const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-                const steamApiUrl = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=EC5728BA25DE2647D995F373555E2E7C&steamids=76561197970941149';
-                
-                // Fetch-pyyntö, jossa lisätään tarvittavat otsikot
-                const response = await fetch(corsProxy + steamApiUrl, {
-                    method: 'GET',
-                    headers: {
-                        'Origin': window.location.origin,  // Lisätään Origin-otsikko
-                        'X-Requested-With': 'XMLHttpRequest'  // Lisätään X-Requested-With-otsikko
-                    }
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    
-                    if (data.contents) {
-                        const apiData = JSON.parse(data.contents); // Puramme välimuistista saadun JSON:n
-                        const playerData = apiData.response.players[0];
-                        
-                        document.getElementById('playerName').textContent = playerData.personaname;
-                        document.getElementById('profileUrl').href = playerData.profileurl;
-                        document.getElementById('profileUrl').textContent = playerData.profileurl;
-                        document.getElementById('profileAvatar').src = playerData.avatarfull;
-                        document.getElementById('realName').textContent = playerData.realname;
-                    } else {
-                        document.getElementById('playerName').textContent = 'Tietojen hakeminen epäonnistui';
-                    }
-                } else {
-                    document.getElementById('playerName').textContent = 'API-pyyntö epäonnistui';
-                }
-            }
-    
-            getSteamProfile();
-        </script> -->
     </main>
 </body>
 </html>

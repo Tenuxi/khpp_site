@@ -10,13 +10,13 @@ const url = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?k
 // https://cors-anywhere.herokuapp.com/https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=EC5728BA25DE2647D995F373555E2E7C&steamids=76561197970941149
 
 // Funktio, joka hakee pelaajan tiedot ja tulostaa ne HTML:hen
-aasync function getSteamProfile() {
+async function getSteamProfile() {
     try {
         console.log("Aloitetaan pyyntö Steam API:lle...");
 
-        const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-        const steamApiUrl = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=EC5728BA25DE2647D995F373555E2E7C&steamids=76561197970941149';
-        const url = corsProxy + steamApiUrl;
+        // const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+        // const steamApiUrl = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=EC5728BA25DE2647D995F373555E2E7C&steamids=76561197970941149';
+        // const url = corsProxy + steamApiUrl;
 
         const response = await fetch(url, {
             method: 'GET',
@@ -27,6 +27,7 @@ aasync function getSteamProfile() {
         });
 
         if (!response.ok) {
+            console.log(response);
             throw new Error(`Virhe API-pyynnössä: ${response.status}`);
         }
 
